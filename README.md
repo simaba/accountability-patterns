@@ -1,98 +1,81 @@
 # AI Accountability Design Patterns
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/simaba/ai-accountability-design-patterns)](https://github.com/simaba/ai-accountability-design-patterns/commits/main)
+[![NIST AI RMF](https://img.shields.io/badge/NIST%20AI%20RMF-Aligned-0055A4?style=flat-square)](https://airc.nist.gov/home)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![Discussions](https://img.shields.io/badge/Discussions-Join-7289da?style=flat-square&logo=github)](https://github.com/simaba/ai-accountability-design-patterns/discussions)
 
-A practical pattern library for designing human accountability into AI-enabled systems — covering escalation logic, ownership models, and intervention paths.
-
----
-
-## Why this exists
-
-AI systems often fail operationally not only because of model behaviour, but because:
-
-- escalation logic is vague or missing
-- ownership is fragmented across teams
-- humans are nominally "in the loop" but lack real authority
-- override paths are under-specified or untested
+A catalog of design patterns for building accountable AI systems in regulated industries.
+Each pattern provides a problem statement, solution structure, implementation guidance,
+and mapping to NIST AI RMF and EU AI Act requirements.
 
 ---
 
-## Core design principle
+## What Is AI Accountability?
 
-```mermaid
-flowchart TD
-    A[AI system output] --> B{Intervention
-conditions met?}
-    B -->|No| C[Output delivered]
-    B -->|Yes| D[Human notified
-with context]
-    D --> E{Authority to
-intervene?}
-    E -->|Yes| F[Human overrides
-or confirms]
-    E -->|No| G[Escalate to
-authorised party]
-    F & G --> H[Decision logged
-and reviewable]
-```
+AI accountability means that individuals and organizations can be held responsible
+for the outcomes of AI systems — that there are clear lines of ownership, transparent
+decision processes, and mechanisms for redress when things go wrong.
 
-> Human oversight is only meaningful when: intervention conditions are explicit, authority is real, context is sufficient, and decisions are logged and reviewable.
+The NIST AI RMF defines accountability as one of seven characteristics of trustworthy AI:
+> *"AI actors should be accountable for the development, deployment, and impacts of AI
+> systems, including supporting human oversight."*
 
 ---
 
-## Patterns included
+## Pattern Catalog
 
-| Pattern | What it addresses |
-|---------|-----------------|
-| `patterns/human-override.md` | When and how humans can override AI decisions |
-| `patterns/escalation-thresholds.md` | Defining triggers for human escalation |
-| `patterns/ownership-models.md` | Assigning clear operational ownership |
-| `patterns/decision-context.md` | Ensuring humans have sufficient context to act |
-| `patterns/incident-accountability.md` | Post-incident ownership and review |
+### Governance Patterns
+
+| Pattern | Problem | Solution |
+|---|---|---|
+| **Model Inventory** | No central registry of AI systems in production | Maintain a versioned, owner-assigned inventory of all deployed models |
+| **Ownership Assignment** | Unclear who is responsible when an AI system fails | Assign a named technical owner and business owner to every AI system |
+| **AI Policy Cascade** | Governance policies not reaching practitioners | Publish policy as code — embed governance rules in CI/CD pipelines |
+| **Governance Gate** | AI systems deployed without appropriate review | Require signed-off checklists at defined lifecycle milestones |
+
+### Transparency Patterns
+
+| Pattern | Problem | Solution |
+|---|---|---|
+| **Model Card** | No documentation of model capabilities and limitations | Create a structured model card for every production model |
+| **Decision Log** | AI decisions not auditable after the fact | Log inputs, outputs, model version, and confidence for every decision |
+| **Confidence Surfacing** | Users cannot tell when AI is uncertain | Surface confidence scores and uncertainty estimates in the UI |
+| **Explanation on Demand** | Stakeholders cannot understand AI decisions | Implement on-demand SHAP/LIME explanations for high-stakes decisions |
+
+### Human Oversight Patterns
+
+| Pattern | Problem | Solution |
+|---|---|---|
+| **Human-in-the-Loop Gate** | High-stakes decisions made autonomously | Require human review before action for decisions above a risk threshold |
+| **Override Mechanism** | Operators cannot override erroneous AI decisions | Implement a documented, audited override pathway with reason capture |
+| **Escalation Ladder** | Edge cases fall through without review | Define a tiered escalation path for low-confidence or novel inputs |
+| **Sunset Clause** | Models remain in production past their useful life | Set mandatory model review dates; require affirmative renewal to continue |
+
+### Redress Patterns
+
+| Pattern | Problem | Solution |
+|---|---|---|
+| **Adverse Action Explanation** | Affected individuals cannot understand why they were denied | Generate plain-language explanations with specific contributing factors |
+| **Appeal Pathway** | No mechanism for contesting AI decisions | Implement a formal appeal process with human review and documented outcomes |
+| **Impact Audit** | Unknown whether AI system is causing disproportionate harm | Conduct regular disparate impact audits by protected characteristics |
 
 ---
 
-## Worked examples
+## NIST AI RMF Mapping
 
-| Example | Industry context |
-|---------|----------------|
-| `examples/customer-support-agent.md` | AI-assisted customer service with override path |
-| `examples/ivi-assistant.md` | In-vehicle AI assistant with safety escalation |
+See [docs/nist-rmf-mapping.md](docs/nist-rmf-mapping.md) for a full mapping of each
+pattern to NIST AI RMF functions and subcategories.
 
 ---
 
-## Templates
-
-- `templates/accountability-review-checklist.md` — review checklist for new AI deployments
-
----
-
-## Who this is for
-
-- AI product managers designing human-in-the-loop systems
-- Platform and systems engineers implementing escalation logic
-- Governance and risk leaders in regulated industries
-- Operations and quality teams accountable for AI outcomes
-
----
-
-## Related repositories
-
-This repository is part of a connected toolkit for responsible AI operations:
+## Ecosystem
 
 | Repository | Purpose |
-|-----------|---------|
-| [Enterprise AI Governance Playbook](https://github.com/simaba/enterprise-ai-governance-playbook) | End-to-end AI operating model from intake to improvement |
-| [AI Release Governance Framework](https://github.com/simaba/ai-release-governance-framework) | Risk-based release gates for AI systems |
-| [AI Release Readiness Checklist](https://github.com/simaba/ai-release-readiness-checklist) | Risk-tiered pre-release checklists with CLI tool |
-| [AI Accountability Design Patterns](https://github.com/simaba/ai-accountability-design-patterns) | Patterns for human oversight and escalation |
-| [Multi-Agent Governance Framework](https://github.com/simaba/multi-agent-governance-framework) | Roles, authority, and escalation for agent systems |
-| [Multi-Agent Orchestration Patterns](https://github.com/simaba/multi-agent-orchestration-patterns) | Sequential, parallel, and feedback-loop patterns |
-| [AI Agent Evaluation Framework](https://github.com/simaba/ai-agent-evaluation-framework) | System-level evaluation across 5 dimensions |
-| [Agent System Simulator](https://github.com/simaba/agent-system-simulator) | Runnable multi-agent simulator with governance controls |
-| [LLM-powered Lean Six Sigma](https://github.com/simaba/LLM-powered-Lean-Six-Sigma) | AI copilot for structured process improvement |
+|---|---|
+| [enterprise-ai-governance-playbook](https://github.com/simaba/enterprise-ai-governance-playbook) | End-to-end governance playbook |
+| [ai-release-readiness-checklist](https://github.com/simaba/ai-release-readiness-checklist) | Release gate framework + CLI |
+| [ai-risk-taxonomy](https://github.com/simaba/ai-risk-taxonomy) | Structured AI risk taxonomy |
+| [nist-ai-rmf-implementation-guide](https://github.com/simaba/nist-ai-rmf-implementation-guide) | NIST AI RMF practitioner guide |
+| [awesome-ai-governance](https://github.com/simaba/awesome-ai-governance) | Curated governance resources |
 
----
-
-*Shared in a personal capacity. Open to collaborations and feedback — connect on [LinkedIn](https://linkedin.com/in/simaba) or [Medium](https://medium.com/@bagheri.sima).*
+*Maintained by [Sima Bagheri](https://github.com/simaba) · Connect on [LinkedIn](https://www.linkedin.com/in/simabagheri)*
