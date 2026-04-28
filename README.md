@@ -6,7 +6,23 @@
 
 A catalog of design patterns for building accountable AI systems in regulated industries.
 Each pattern provides a problem statement, solution structure, implementation guidance,
-and mapping to NIST AI RMF and EU AI Act requirements.
+and mapping to NIST AI RMF and EU AI Act concepts.
+
+---
+
+## Choose this repo when
+
+Use this repository when you need to define:
+
+- named ownership for AI systems
+- decision rights and approval responsibility
+- human oversight and escalation paths
+- override, appeal, and redress mechanisms
+- audit trail expectations for AI-assisted decisions
+
+If you need the broader enterprise operating model, use [`governance-playbook`](https://github.com/simaba/governance-playbook).
+If you need release-stage gates, use [`release-governance`](https://github.com/simaba/release-governance).
+If you need a runnable release validator, use [`release-checklist`](https://github.com/simaba/release-checklist).
 
 ---
 
@@ -17,6 +33,15 @@ for the outcomes of AI systems, that there are clear lines of ownership, transpa
 decision processes, and mechanisms for redress when things go wrong.
 
 The NIST AI RMF defines accountability as one of the characteristics of trustworthy AI.
+
+---
+
+## Practical artifacts
+
+| Artifact | Use for |
+|---|---|
+| [`templates/accountability-matrix.md`](templates/accountability-matrix.md) | Defining named ownership, decision rights, escalation, redress, and audit requirements |
+| [`examples/sample-accountability-matrix.md`](examples/sample-accountability-matrix.md) | Seeing a filled generic example of accountability design in practice |
 
 ---
 
