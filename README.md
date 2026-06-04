@@ -4,11 +4,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Discussions](https://img.shields.io/badge/Discussions-Join-7289da?style=flat-square&logo=github)](https://github.com/simaba/accountability-patterns/discussions)
 
-A catalog of design patterns for building accountable AI systems in regulated industries. Each pattern provides a problem statement, solution structure, implementation guidance, and practitioner mapping to NIST AI RMF and EU AI Act concepts.
+A catalog of design patterns for building accountable AI systems in regulated and high-accountability environments.
 
----
+Each pattern provides a problem statement, solution structure, implementation guidance, and practitioner mapping to NIST AI RMF and EU AI Act concepts.
 
-## Choose this repo when
+## Maturity
+
+This is a **practitioner pattern catalog**. It is intended to help teams reason about ownership, oversight, escalation, appeal, and redress. It is not a legal determination, regulatory assessment, or certified accountability framework.
+
+## Purpose
 
 Use this repository when you need to define:
 
@@ -18,38 +22,26 @@ Use this repository when you need to define:
 - override, appeal, and redress mechanisms
 - audit trail expectations for AI-assisted decisions
 
-If you need the broader enterprise operating model, use [`governance-playbook`](https://github.com/simaba/governance-playbook).
-If you need release-stage gates, use [`release-governance`](https://github.com/simaba/release-governance).
-If you need a runnable release validator, use [`release-checklist`](https://github.com/simaba/release-checklist).
+For the broader enterprise operating model, use [`governance-playbook`](https://github.com/simaba/governance-playbook).
+For release-stage gates, use [`release-governance`](https://github.com/simaba/release-governance).
+For a runnable release validator, use [`release-checklist`](https://github.com/simaba/release-checklist).
 
----
+## Accountability model
 
-## Maturity
-
-This is a **practitioner pattern catalog**. It is intended to help teams reason about ownership, oversight, escalation, appeal, and redress. It is not a legal determination, regulatory assessment, or certified accountability framework.
-
----
-
-## What Is AI Accountability?
-
-AI accountability means that individuals and organizations can be held responsible for the outcomes of AI systems, that there are clear lines of ownership, transparent decision processes, and mechanisms for redress when things go wrong.
+AI accountability means that outcomes have clear ownership, decisions can be traced, responsibilities are explicit, and affected users or operators have a path for review or redress when something goes wrong.
 
 The NIST AI RMF identifies accountability as one characteristic of trustworthy AI. This repository translates that concept into practical design patterns and templates.
-
----
 
 ## Practical artifacts
 
 | Artifact | Use for |
 |---|---|
 | [`templates/accountability-matrix.md`](templates/accountability-matrix.md) | Defining named ownership, decision rights, escalation, redress, and audit requirements |
-| [`examples/sample-accountability-matrix.md`](examples/sample-accountability-matrix.md) | Seeing a filled generic example of accountability design in practice |
+| [`examples/sample-accountability-matrix.md`](examples/sample-accountability-matrix.md) | Reviewing a filled generic example of accountability design in practice |
 
----
+## Pattern catalog
 
-## Pattern Catalog
-
-### Governance Patterns
+### Governance patterns
 
 | Pattern | Problem | Solution |
 |---|---|---|
@@ -58,7 +50,7 @@ The NIST AI RMF identifies accountability as one characteristic of trustworthy A
 | **AI Policy Cascade** | Governance policies not reaching practitioners | Publish policy as code and embed governance rules in CI/CD pipelines |
 | **Governance Gate** | AI systems deployed without appropriate review | Require signed-off checklists at defined lifecycle milestones |
 
-### Transparency Patterns
+### Transparency patterns
 
 | Pattern | Problem | Solution |
 |---|---|---|
@@ -67,7 +59,7 @@ The NIST AI RMF identifies accountability as one characteristic of trustworthy A
 | **Confidence Surfacing** | Users cannot tell when AI is uncertain | Surface confidence scores and uncertainty estimates in the UI |
 | **Explanation on Demand** | Stakeholders cannot understand AI decisions | Provide an explanation mechanism for high-impact decisions where appropriate |
 
-### Human Oversight Patterns
+### Human-oversight patterns
 
 | Pattern | Problem | Solution |
 |---|---|---|
@@ -76,7 +68,7 @@ The NIST AI RMF identifies accountability as one characteristic of trustworthy A
 | **Escalation Ladder** | Edge cases fall through without review | Define a tiered escalation path for low-confidence or novel inputs |
 | **Sunset Clause** | Models remain in production past their useful life | Set mandatory model review dates and require affirmative renewal to continue |
 
-### Redress Patterns
+### Redress patterns
 
 | Pattern | Problem | Solution |
 |---|---|---|
@@ -84,13 +76,9 @@ The NIST AI RMF identifies accountability as one characteristic of trustworthy A
 | **Appeal Pathway** | No mechanism for contesting AI decisions | Implement a formal appeal process with human review and documented outcomes |
 | **Impact Audit** | Unknown whether an AI system is causing disproportionate harm | Conduct regular impact audits against relevant risk and fairness criteria |
 
----
-
 ## NIST AI RMF mapping
 
 See [docs/nist-rmf-mapping.md](docs/nist-rmf-mapping.md) for a full practitioner mapping of each pattern to NIST AI RMF functions and subcategories.
-
----
 
 ## Scope and disclaimer
 
@@ -98,9 +86,7 @@ This repository is shared in a personal capacity. It is not legal advice, compli
 
 References to accountability, redress, human oversight, NIST AI RMF, EU AI Act, or regulated-industry obligations are practitioner mappings and examples. Always verify against official sources and internal requirements before using these patterns for compliance, safety, or release decisions.
 
----
-
-## Ecosystem
+## Related repositories
 
 | Repository | Purpose |
 |---|---|
